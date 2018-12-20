@@ -1,0 +1,45 @@
+<div class="page" data-page="select-payment" data-classify="fundraising">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="back link">
+                    <i class="icon icon-back"></i>
+                </a>
+            </div>
+            <div class="title sliding">選擇付款方式</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="content-block">
+            <div class="content-block">
+                <div style="margin-top:30px;" class="select-payment-input-container">
+                    <span>捐款金額</span>
+                    <input id="totalAmount" type="number" min="50" class="select-payment-input" placeholder="最低金額50元">
+                </div>
+                <div class="select-payment-input-container">
+                    <span>收據寄送地址</span>
+                    <input id="address" type="text" class="select-payment-input" placeholder="地址">
+                </div>
+                <div class="select-payment-input-container">
+                    <span>捐款方式 </span>
+                    <select id="payment_method" class="input-with-value select-payment-select" onchange="OnPaymentMethodChange()">
+                        <option value="CVS">超商繳費代碼</option>
+                        <option value="ATM">ATM轉帳</option>
+                    </select>
+                </div>
+                <div id="CVS_Type_Container" class="select-payment-input-container">
+                    <span>選擇超商</span>
+                    <select id="CVS_Type" class="input-with-value select-payment-select">
+                        <option value="IBON">7-Eleven</option>
+                        <option value="FAMILY">全家</option>
+                        <option value="HILIFE">萊爾富</option>
+                        <option value="OK">OK超商</option>
+                    </select>
+                </div>
+                <div class="donate-link-button" style="margin-top:60px;" onclick="donate()">
+                    我要捐款
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="page" data-page="new-forum-article" data-classify="forum">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="back link">
+                    <i class="icon icon-back"></i>
+                </a>
+            </div>
+            <div class="title sliding">發表文章</div>
+            <div class="right">
+                <a href="#" class="link" id="post" onclick="NewForumPost()">
+                    發布
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="content-block input-form">
+            <div class="article-header" style="margin-top:10px;">
+                <img src="https://graph.facebook.com/2037460769619188/picture?type=normal" class="user-icon">
+                <span class="poster-name">陳冠維</span>
+            </div>
+            <!-- <input type="text" placeholder="請選擇類別" readonly="readonly" id="classify"> -->
+            <div class="item-input">
+                <select id="classify">
+                    <option value="-1">請選擇類別</option>
+                    <option value="0">情報</option>
+                    <option value="1">提問</option>
+                    <option value="2">收養</option>
+                    <option value="3">失蹤</option>
+                </select>
+            </div>
+            <input type="text" placeholder="請輸入標題" id="title">
+            <textarea class="post-textarea" id="content" placeholder="輸入文章內容"></textarea>
+            <label id="upload_label" class="upload_cover">
+                <input id="img-file" type="file" accept="image/*" capture="filesystem" onchange="previewFile()" required="">
+                <span id="upload_text" class="upload_icon">上傳圖片</span>
+            </label>
+        </div>
+    </div>
+</div>

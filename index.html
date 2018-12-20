@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!-- <meta http-equiv="  " content="default-src *; style-src 'self’; connect-src https://exhentai.org 36.224.218.192:21731; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;media-src 'self' 'unsafe-inline' 'unsafe-eval' *;img-src 'self' 'unsafe-inline' 'unsafe-eval' *"> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="img-src *; "/> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="framework7/dist/css/framework7.css">
+    <link rel="stylesheet" href="framework7/dist/css/framework7.md.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+    <link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Hello World</title>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/postArticles.js"></script>
+    <script src="js/donate.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+
+        <!-- Panels overlay-->
+        <div class="panel-overlay"></div>
+        <!-- Left panel with reveal effect-->
+        <div class="panel panel-left panel-cover">
+            <div class="list-block">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <a href="#user-info-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/user-icon.png">
+                                    <span class="side-panel-item-name" id="side-panel-user-name">陳冠維</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#chatroom-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/chatroom.png">
+                                    <span class="side-panel-item-name">聊天室</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#my-post-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/posts.png">
+                                    <span class="side-panel-item-name">我的文章</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pic-share-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/picshare.png">
+                                    <span class="side-panel-item-name">可愛貓貓</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#forum-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/forum.png">
+                                    <span class="side-panel-item-name">討論區</span>
+                                </div>
+                                <!-- <div class="item-inner">
+                                    <div class="item-title">討論區</div>
+                                </div> -->
+                            </a>
+                        </li><li>
+                            <a href="#help-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/help.png">
+                                    <span class="side-panel-item-name">貓貓救援</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#fundraising-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/donate.png">
+                                    <span class="side-panel-item-name">募款</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#noob-tab" class="tab-link ripple item-link item-content panel-close">
+                                <div class="side-panel-item">
+                                    <img class="side-panel-icon" src="img/sidepanel/noob.png">
+                                    <span class="side-panel-item-name">新手奴才</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-right panel-cover">
+            <div class="filter-title"><span>地區篩選</span></div>
+            <div class="content-block" style="padding:10px;padding-top:20px">
+                <div class="night-filter">
+                    <span>夜間急診</span>
+                    <label class="toggle color-red">
+                    <input type="checkbox" id="isNight">
+                    <span class="toggle-icon"></span>
+                </label>
+            </div>
+                <select id="city" onchange="OnCiyFilterChanged()"></select>
+                <div class="filter-button panel-close" onclick="ApplyHospitalFilter()">
+                    <span>篩選</span>
+                </div>
+                <div class="district-container">
+                    <p>
+                        <input type="checkbox" name="district" data-name="楠梓區"/>
+                        <label for="test1">楠梓區</label>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <div class="panel panel-left panel-reveal">
+            ... panel content goes here ...
+        </div> -->
+
+        <div class="views tabs">
+
+            <div id="pic-share-tab" class="view tab tab-active view-main pic-share-view">
+                <div data-page="pic-share" class="page" data-classify="pic-share">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">可愛貓貓</div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="page-content infinite-scroll-content ptr-content">
+                        <div class="ptr-preloader">
+                            <div class="preloader"></div>
+                            <div class="ptr-arrow"></div>
+                        </div>
+                        <div class="pic-share-list" style="margin:0px;padding:0px;">
+                        </div>
+                        <div class="preloader infinite-scroll-preloader"></div>
+                    </div>
+                    <div class="fab fab-right-bottom color-theme-orange">
+                        <a href="/new-pic-share-post/">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="forum-tab" class="view tab forum-view">
+                <div data-page="forum" class="page" data-classify="forum">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">討論區</div>
+
+                        </div>
+                    </div>
+                    <!-- Additional "tabbar-scrollable" class -->
+                    <div class="toolbar tabbar">
+                        <div class="toolbar-inner">
+                            <a href="#tab-0" class="tab-link tab-link-active">情報</a>
+                            <a href="#tab-1" class="tab-link">提問</a>
+                            <a href="#tab-2" class="tab-link">送養</a>
+                            <a href="#tab-3" class="tab-link">失蹤</a>
+                        </div>
+                    </div>
+                    <div class="tabs-animated-wrap">
+                        <div class="tabs">
+                            <div id="tab-0" class="page-content tab tab-active infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="forum-article-list">                                    
+                                </div>
+                            </div>
+                            <div id="tab-1" class="page-content tab infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="forum-article-list">
+                                </div>
+                            </div>
+                            <div id="tab-2" class="page-content tab infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="forum-article-list">
+                                </div>
+                            </div>
+                            <div id="tab-3" class="page-content tab infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="forum-article-list">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fab fab-right-bottom color-theme-blue">
+                        <a href="/new-forum-article/">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="help-tab" class="view tab help-view">
+                <div data-page="help" class="page" data-classify="help">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">貓貓救援</div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="page-content infinite-scroll-content ptr-content">
+                        <div class="ptr-preloader">
+                            <div class="preloader"></div>
+                            <div class="ptr-arrow"></div>
+                        </div>
+                        <div class="help-list" style="margin:0px;padding:0px;">
+                        </div>
+                        <div class="preloader infinite-scroll-preloader"></div>
+                    </div>
+                    <div class="fab fab-right-bottom">
+                        <a href="/new-help/">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fundraising-tab" class="view tab fundraising-view">
+                <div data-page="fundraising" class="page" data-classify="fundraising">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">募款</div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="page-content infinite-scroll-content ptr-content">
+                        <div class="ptr-preloader">
+                            <div class="preloader"></div>
+                            <div class="ptr-arrow"></div>
+                        </div>
+                        <div class="fundraising-list" >
+                        </div>
+                        <div class="preloader infinite-scroll-preloader"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chatroom-tab" class="view tab chatroom-view">
+                <div data-page="chatroom" class="page" data-classify="chatroom">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">聊天室</div>
+
+                        </div>
+                    </div>
+                    <div class="page-content infinite-scroll-content ptr-content">
+                        <div class="ptr-preloader">
+                            <div class="preloader"></div>
+                            <div class="ptr-arrow"></div>
+                        </div>
+                        <div class="chatroom-list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noob-tab" class="view tab noob-view">
+                <div data-page="noob" class="page" data-classify="noob">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open" data-panel="left"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">新手奴才</div>
+                            <div class="right hospital-filter-icon" style="display:none;">
+                                <a href="#" class="link icon-only panel-open" data-panel="right"><i class="material-icons">filter_list</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toolbar tabbar">
+                        <div class="toolbar-inner">
+                            <a href="#tab-tutorial" class="tab-link tab-link-active">文章</a>
+                            <a href="#tab-hospital" class="tab-link">動物醫院</a>
+                        </div>
+                    </div>
+                    <div class="tabs-animated-wrap">
+                        <div class="tabs">
+                            <div id="tab-tutorial" class="page-content tab tab-active infinite-scroll-content ptr-content">
+                                <div class="noob-tutorial-list">
+                                </div>
+                            </div>
+                            <div id="tab-hospital" class="page-content tab infinite-scroll-content ptr-content" data-distance="500">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="noob-hospital-list">
+                                </div>
+                                <div class="preloader infinite-scroll-preloader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="my-post-tab" class="view tab my-post-view">
+                <div data-page="my-post" class="page" data-classify="my-post">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">我發布的文章</div>
+                        </div>
+                    </div>
+                    <!-- Additional "tabbar-scrollable" class -->
+                    <div class="toolbar tabbar">
+                        <div class="toolbar-inner">
+                            <a href="#tab-my-pic" class="tab-link tab-link-active">照片分享</a>
+                            <a href="#tab-my-forum" class="tab-link">討論區</a>
+                            <a href="#tab-my-help" class="tab-link">求救</a>
+                        </div>
+                    </div>
+                    <div class="tabs-animated-wrap">
+                        <div class="tabs">
+                            <div id="tab-my-pic" class="page-content tab tab-active infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="my-pic-list">
+                                </div>
+                            </div>
+                            <div id="tab-my-forum" class="page-content tab infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="my-forum-list">
+                                </div>
+                            </div>
+                            <div id="tab-my-help" class="page-content tab infinite-scroll-content ptr-content">
+                                <div class="ptr-preloader">
+                                    <div class="preloader"></div>
+                                    <div class="ptr-arrow"></div>
+                                </div>
+                                <div class="my-help-list">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user-info-tab" class="view tab user-info-view">
+                <div data-page="user-info" class="page" data-classify="user-info">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open"><i class="material-icons">menu</i></a>
+                            </div>
+                            <div class="title sliding">會員資料</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="user-info-top">
+                            <label>
+                                <img src="img/user-icon.png" id="user-icon">
+                                <img src="img/upload_image.png" id="upload-icon">
+                                <input type="file" id="upload-user-icon" onchange = "ChangeUserIcon()" style="display:none;">
+                            </label>
+                        </div>
+                        <div class="user-info-mid">
+                            <p id="user-name">會員名稱：陳冠維</p>
+                            <p id="user-email">Email：sddd1234567@gmail.com</p>
+                            <!-- <p id="user-article-count">已發布文章 2 篇</p>
+                            <img src="img/edit_profile.png" id="edit-profile-icon"> -->
+
+                        </div>
+                        <div class="user-info-bottom" style="">
+                            <a href = "/donate-records/">
+                                <div class="donate-record-link">
+                                    <span>捐款紀錄</span>
+                                </div>
+                            </a>
+                            <div class="apply-midway-link" onclick="OpenMidWayApplication()">
+                                <span>申請成為中途之家</span>
+                            </div>
+                            <div class="logout-link" onclick="signOut()">
+                                <span>登出</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-screen" id="login-screen">
+            <div class="view">
+                <div class="page">
+                    <div class="page-content login-screen-content">
+                        <div class="login-screen-title">MeowMeow</div>
+                        <form>
+                            <div class="list">
+                                <ul>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">電子郵件</div>
+                                            <div class="item-input-wrap">
+                                                <input type="text" name="login-email" id="login-email" placeholder="請輸入電子郵件">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">密碼</div>
+                                            <div class="item-input-wrap">
+                                                <input type="password" name="login-password" id="login-password" placeholder="請輸入密碼">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    <li><a class="item-link list-button" href="#" onclick="OnLoginButtonClicked()">登入</a></li>
+                                    <li><a class="item-link list-button" href="#" onclick="OpenSignUpScreen()">註冊</a></li>
+                                </ul>
+                                <div class="block-footer">
+                                    <p>喵喵製作團隊</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-screen" id="signup-screen">
+            <div class="view">
+                <div class="page">
+                    <div class="page-content login-screen-content">
+                        <div class="login-screen-title">MeowMeow</div>
+                        <form>
+                            <div class="list">
+                                <ul>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">電子郵件</div>
+                                            <div class="item-input-wrap">
+                                                <input type="text" name="signup-email" id="signup-email" placeholder="請輸入電子郵件">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">使用者名稱</div>
+                                            <div class="item-input-wrap">
+                                                <input type="text" name="signup-name" id="signup-name" placeholder="請輸入使用者名稱">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">密碼</div>
+                                            <div class="item-input-wrap">
+                                                <input type="password" name="signup-password" id="signup-password" placeholder="請輸入您的密碼">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">確認密碼</div>
+                                            <div class="item-input-wrap">
+                                                <input type="password" name="signup-password-check" id="signup-password-check" placeholder="確認密碼">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    <li><a class="item-link list-button" href="#" onclick="OnSignUpButtonClicked()">註冊</a></li>
+                                </ul>
+                                <div class="block-footer">
+                                    <p><a class="link login-screen-close" href="#" data-login-screen="#signup-screen">登入</a></p>
+                                    <p>喵喵製作團隊</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script type="text/javascript" src="js/like.js"></script>
+    <script type="text/javascript" src="js/firebase.js"></script>
+    <script type="text/javascript" src="js/database.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="framework7/dist/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/uploadImgur.js"></script>
+    <script type="text/javascript" src="leaflet/leaflet.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+</body>
+
+</html>

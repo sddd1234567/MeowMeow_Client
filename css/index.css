@@ -1,0 +1,1285 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+ /* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: top;
+}
+
+/*
+   statusbar-overlay sets the background color for the overlay. Black text is the default when the statusbar plugin is not added. When the
+   statusbar plugin is added, it also adds default setting to make the content white via:
+
+       <preference name="StatusBarStyle" value="lightcontent"/>
+
+   Setting the background color to black will allow the default light content (white text/icons) to show on it. The statusbar plugin is included
+   in the config.xml file and will be added by the CLI when you build locally.
+
+   See https://github.com/apache/cordova-plugin-statusbar
+*/
+
+@font-face{ 
+    font-family: "NotoSans";  
+    src: url('../fonts/NotoSansCJKtc-Regular.ttf')  format('truetype');
+}
+@font-face{ 
+    font-family: "seto";  
+    src: url('../fonts/setofont.ttf')  format('truetype');
+}  
+
+.md body{
+    font-family: "seto"
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.md a{
+    color: unset;
+    text-decoration: unset;
+}
+
+.statusbar-overlay {
+    background: #000000;
+}
+
+.pic-item{
+    min-height:300px;
+    padding: 10px;
+    background-color: #fbe3b9;
+    border-top: solid 0.5px #efb780;
+    border-bottom: solid 0.5px #efb780;
+    margin-bottom: 5px;
+}
+
+.pic-container{
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.article-header{
+    position: relative;
+}
+
+.user-icon{
+    width:50px;
+    height:50px;
+    border-radius:100%;
+}
+
+.poster-name{
+    position:absolute;
+    top:11px;
+    left:65px;
+    font-size: 20px;
+}
+
+.pic-post-time{
+    float:right;
+}
+
+[data-classify='pic-share'] .navbar{
+    background-color: #fe951d;
+}
+
+[data-classify = 'pic-share'] .page-content{
+    background-color: #fff3de;
+}
+
+[data-classify = 'forum'] .navbar{
+    background-color: #3585fc;
+}
+
+[data-classify = 'help'] .navbar{
+    background-color: #c97bfc;
+}
+
+[data-classify = "fundraising"] .navbar{
+    background-color: #6bd205;
+}
+
+[data-classify = 'chatroom'] .navbar{
+    background-color: #0fac8e;
+}
+
+[data-classify = 'noob'] .navbar{
+    background-color: #ff3333;
+}
+
+[data-classify = 'my-post'] .navbar{
+    background-color: #f9668e;
+}
+
+[data-classify = 'user-info'] .navbar{
+    background-color: #0fac8e;
+}
+
+[data-classify = 'chatroom'] .page-content{
+    background-color: #dbefeb;
+}
+
+[data-page="new-pic-share"] .page-content{
+    background-color: #fff7e9;
+}
+
+.article-footer{
+    margin: auto;
+    margin-top:10px;
+}
+
+.footer-botton{
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+    margin: auto;
+    font-size: 19px;
+}
+
+.favorite-icon i{
+    color: gold;
+}
+
+.article-footer-count-text{
+  vertical-align: middle;
+}
+
+.panel-left, .panel-right {
+ box-shadow: none !important;
+}
+
+.upload_cover {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    cursor: pointer;
+    border: 0.5px solid #000000;
+    border-radius: 10px;
+    margin: auto;
+    display: block;
+    transition: 0.75s;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+#upload_text{
+    font-size: 35px;
+    color: gray;
+    line-height: 300px;
+}
+
+.upload_cover:hover{
+    background-color: #d8d8d8;
+}
+
+input#img-file{
+    display: none;
+}
+
+textarea.post-textarea{
+    width: 100%;
+    min-height: 200px;
+    line-height: 1.1;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+[data-page="new-forum-article"] textarea.post-textarea{
+    height: 100px;
+}
+
+textarea:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.input-form{
+    margin: 10px;
+}
+
+.pic-share-comments{
+    margin-bottom: 100px;
+}
+
+[data-page="pic-share-content"] .comment-item{
+    position: relative;
+    background-color: #fbe3b9;
+    border-bottom: 1px solid #e9a366;
+    border-top: 1px solid #e9a366;
+}
+
+[data-page="forum-article-content"] .comment-item{
+    position: relative;
+    background-color: #e6ecf5;
+    border-bottom: solid 1px #acc5e9;
+    border-top: solid 1px #acc5e9;
+}
+
+[data-page="help-content"] .comment-item{
+    position: relative;
+    background-color: #f1e3fb;
+    border-bottom: solid 1px #be8ede;
+    border-top: solid 1px #be8ede;
+}
+
+.comment-item .comment-poster-name{
+    font-size: 21px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.comment-item .comment-content{
+    display: inline-block;
+    font-size: 21px;
+    margin-top: 5px;
+}
+
+.comment-item .comment-user-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-top: 10px;
+}
+
+.comment-container{
+    padding: 8px;
+}
+
+.comment-container .poster-name{
+    color: #6f6f6f;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 19px;
+}
+
+.comment-container .user-icon{
+    position: absolute;
+}
+
+.comment-container .pic-post-time{
+    float: left;
+}
+
+.comment-container .comment-content-container{
+    margin-left: 67px;
+    position: relative;
+}
+
+.new-comment-item{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #fbe3b9;
+}
+
+[data-page="forum-article-content"] .new-comment-item{
+    background-color: #e6ecf5;
+}
+
+.new-comment-item .user-icon{
+    position: unset;
+    float: left;
+}
+
+.new-comment-item textarea{
+    width: calc(100% - 39px);
+    margin-top: 19px;
+    font-size: 22px;
+    height: 26px;
+    line-height: 1.1;
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+}
+
+.new-comment-item .comment-content.container{
+    height: 100%;
+    position: unset;
+    display: block;
+}
+
+.new-comment-item .submit-button {
+    position: absolute;
+    right: -1px;
+    bottom: -11px;
+}
+
+.new-comment-item .submit-button img{
+    width: 39px;
+    height: 39px;
+}
+
+.clear{
+    clear: both;
+}
+
+.footer-icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
+    margin-bottom: -2px;
+}
+
+.md [data-page="forum"] .tabbar a.tab-link {
+    background-color: #c6d7ef;
+    color: black;
+    font-size: 21px;
+}
+
+.md [data-page="forum"] .tabbar a.tab-link-active {
+    background-color: #2263bf;
+    color: white;
+}
+
+.md [data-page="noob"] .tabbar a.tab-link {
+    background-color: #f9c8c8;
+    color: black;
+    font-size: 21px;
+}
+
+.md [data-page="noob"] .tabbar a.tab-link-active {
+    background-color: #e95b5b;
+    color: white;
+    font-size: 21px;
+}
+
+.md [data-page="my-post"] .tabbar a.tab-link{
+    background-color: #f8e1e7;
+    color: black;
+    font-size: 21px;
+}
+
+.md [data-page="my-post"] .tabbar a.tab-link-active{
+    background-color: #cf305c;
+    color: white;
+    font-size: 21px;
+}
+
+.forum-article-comment-count{
+    position: absolute;
+    top: 12.5px;
+    font-size: 18px;
+    width: 50px;
+    text-align: center;
+    color: white;
+}
+
+.forum-article-list-item{
+    background-color: #e6ecf5;
+    border-bottom: 2px solid #b1c9ea;
+}
+
+.forum-article-list-item-left{
+    border: 0.1px solid;
+    border-color: #e2f4ff;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin: 5px;
+    background-color: #c10066;
+    display: inline-block;
+}
+
+.forum-article-list-item-middle{
+    display: inline-block;
+    height: 50px;
+    margin-top: 14px;
+    width: calc(100% - 62px);
+    position: absolute;
+}
+
+.forum-article-list-item-title{
+    font-size: 23px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+.forum-item{
+    padding: 10px;
+    background-color: #e6ecf5;
+    border-top: solid 0.5px #acc5e9;
+    border-bottom: solid 0.5px #acc5e9;
+    margin-bottom: 5px;
+}
+
+.md .classify-chip .chip{
+    border-radius: 0px;
+    background-color: unset;
+    border: 1px solid #659ce8;
+    padding: 8px;
+    margin: unset;
+    height: 21px;
+}
+
+.md .classify-chip .chip .classify{
+    color: #659ce8;
+}
+
+.article-title{
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+[data-page="new-forum-article"] select#classify{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-bottom: 1px solid black;
+    line-height: 1.5;
+    font-size: 20px;
+    color: #3585fc;
+}
+
+[data-page="new-forum-article"] input#title {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+[data-page="new-help"] input#position {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    border-bottom: 1px solid black;
+    line-height: 1.5;
+    font-size: 20px;
+    padding-left: 25px;
+}
+
+.forum-comments{
+    margin-bottom: 100px;
+}
+
+#map{
+    width:100%;
+    height:100%;
+}
+
+[data-page='new-help'] #location-icon{
+    color: red;
+    position: absolute;
+    top: 3px;
+}
+
+[data-page='new-help'] #choose_location{
+    position: relative;
+}
+
+.emergency{
+    margin-bottom: 10px;
+}
+
+.emergency span{
+    font-size: 20px;
+}
+
+.emergency-rate{
+    width: 20px;
+    margin-bottom: -3px;
+    margin-left: 1px;
+}
+
+.help-item {
+    min-height: 300px;
+    padding: 10px;
+    border-top: solid 0.5px #be8ede;
+    border-bottom: solid 0.5px #be8ede;
+    margin-bottom: 5px;
+    background-color: #f1e3fb;
+}
+
+.location-icon{
+    position: absolute;
+    top: 32px;
+    color: red;
+    left: 61px;
+    font-size: 19px;
+}
+
+.location-name{
+    position: absolute;
+    top: 31px;
+    left: 81px;
+    font-size: 15px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.help-item .emergency{
+    margin-left: 65px;
+}
+
+.help-item .poster-name{
+    top: 0px;
+}
+
+[data-page='help-content'] .new-comment-item{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #f1e3fb;
+}
+
+.md #help-tab .fab-right-bottom a{
+    background-color: #c97bfc;
+}
+
+.md .panel .list li{
+    height: 63px;
+}
+
+.md .panel .list li a.item-content{
+    padding-left: 16px;
+    border-top: 1px solid #dea4b4;
+    border-bottom: 1px solid #dea4b4;
+    background-color: #f8e1e7;
+    height: 100%;
+}
+
+.panel .side-panel-item{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+}
+
+.panel .side-panel-icon{
+    width: 36px;
+    float: left;
+}
+
+.panel .list ul li:first-child .side-panel-icon{
+    border-radius: 100%;
+}
+
+.panel .side-panel-item-name{
+    float: left;
+    margin-left: 5px;
+    margin-top: 3px;
+    font-size: 18px;
+}
+
+.md .panel-left{
+    background-color: #fff0f4;
+}
+
+#comment-submit-button{
+    width: 29px;
+}
+
+.help-comments{
+    margin-bottom: 100px;
+}
+
+.fundraising-list-item{
+    padding: 10px;
+    border-bottom: 1px solid #4b8b0b;
+}
+
+.fundraising-list-item-container{
+    width: 71%;
+    float: left;
+    position: relative;
+}
+
+.fundraising-list-item-title{
+    font-size: 21px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    height: 25px;
+    max-width: calc(100% - 37px);
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.donate-count{
+    float: right;
+    font-size: 20px;
+}
+
+.person-icon{
+    float: right;
+    margin-top: 3px;
+    color: #4b8b0b;
+}
+
+.donate-bar-container{
+    height: 21px;
+    border-radius: 13px;
+    border: 1px solid #4b8b0b;
+    margin-top: 5px;
+    padding: 6px;
+}
+
+.donate-bar-inner{
+    width: 100%;
+    height: 100%;
+    background-color: #4b8b0b;
+    border-radius: 13px;
+}
+
+.donate-target{
+    position: absolute;
+    bottom: 7px;
+    right: -46px;
+}
+
+.post-time{
+    float: right;
+}
+
+.donate-now{
+    color: white;
+    margin: auto;
+    display: table;
+}
+
+.fundraising-content-top{
+    margin: 10px;
+}
+
+.fundraising-content-top-left{    
+    float: left;
+    width: calc(100% - 130px);
+}
+
+.fundraising-content-top-right{
+    width: 120px;
+    float: left;
+    margin-left: 10px;
+    position: relative;
+}
+
+.fundraising-content-top .title{
+    margin: 5px 0px;
+    font-size: 22px;
+}
+
+.fundraising-content-top .content{
+    margin: 0px;
+}
+
+.fundraising-user-icon{
+    width: 39px;
+    height: 39px;
+}
+
+.fundraising-poster-name{
+    position: absolute;
+    font-size: 18px;
+    left: 45px;
+}
+
+.fundraising-post-time{    
+    position: absolute;
+    top: 24px;
+    left: 46px;
+    color: gray;
+}
+
+[data-classify = 'fundraising'] .toolbar a.tab-link.tab-link-active {
+    background-color: #4b8b0b;
+}
+
+[data-classify = 'fundraising'] .toolbar a.tab-link {
+    font-size: 19px;
+    color: black;
+    background-color: #cde8b2;
+}
+
+#fundraising-state .donate-target{    
+    float: left;
+    margin-top: 12px;
+    margin-left: 5px;
+    position: unset;
+}
+
+#fundraising-state .donate-bar-container{
+    width: calc(100% - 118px);
+    float: left;
+}
+
+.fundraising-info-block{
+    background-color: #cde8b2;
+    padding: 10px;
+    margin-top: 15px;
+    border-top: 1px solid #8dc259;
+    border-bottom: 1px solid #8dc259;
+}
+
+.fundraising-info-block p{
+    font-size: 20px;
+    text-align: center;
+    margin: unset;
+}
+
+.donate-link-button{
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    height: 50px;
+    background-color: #6bd205;
+    color: white;
+    line-height: 50px;
+    font-size: 21px;
+}
+
+[data-page='fundraising-content'] .tab{
+    padding-top: 10px;
+}
+
+.fundraising-update-list-item{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.fundraising-update-list-item .title{
+    font-size: 22px;
+}
+
+.fundraising-update-list-item .content{    
+    font-size: 13px;
+    height: 18px;
+    overflow: hidden;
+}
+
+.container{
+    width: calc(100% - 20px);
+    margin: auto;
+    margin-top: 20px;
+}
+
+.donate-payment-content-table{
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.donate-payment-content-table td {
+    border: 1px solid black;
+}
+
+.donate-payment-content-table #expireDate{
+    color: red;
+}
+
+.donate-payment-content-table #paymentNoCVS, .donate-payment-content-table #paymentNoATM{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.qr-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.qr-container p{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.select-payment-input-container{
+    margin: auto;
+    margin-top: 25px;
+    width: 268px;
+    padding: 5px;
+    font-size: 20px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+}
+
+.md input.select-payment-input{
+    background-color: #cde8b2;
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 35px;
+    -webkit-appearance: none;
+}
+
+.select-payment-select{
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 20px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 35px;
+    background: url(../img/br_down.png) no-repeat right #cde8b2;
+    background-position-x: 244px;
+    -webkit-appearance: listbox;
+}
+
+.chatroom-list-item{
+    border-top: 1px solid #4daa97;
+    border-bottom: 1px solid #4daa97;
+    height: 70px;
+    background-color: #c6e9e2;
+}
+
+.chatroom-list-user-icon{
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 25px;
+    float: left;
+}
+
+.chatroom-list-name{
+    width: calc(100% - 60px);
+    float: left;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 31px;
+}
+
+.chatroom-message-item{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.chatroom-user-icon{
+    width: 39px;
+    height: 39px;
+    margin: 0px 10px;    
+    border-radius: 25px;
+}
+
+.chatroom-message-content{
+    background-color: white;
+    padding: 7px;
+    border: 0.5px solid black;
+    border-radius: 20px;
+    margin-top: 5px;
+    max-width: 50%;
+}
+
+.chatroom-message-item.right .chatroom-user-icon, .chatroom-message-item.right .chatroom-message-content{
+    float: right;
+}
+
+.chatroom-message-item.left .chatroom-user-icon, .chatroom-message-item.left .chatroom-message-content{
+    float: left;
+}
+
+.message-area{
+    margin-bottom: 80px;
+}
+
+.send-message-container{
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #0fac8e;
+}
+
+.send-button{
+    width: 50px;
+    float: right;
+    margin-top: 5px;
+}
+
+#send-message-input{    
+    background-color: white;
+    margin-left: 5px;
+    width: calc(100% - 60px);
+    height: 35px;
+    padding: 10px;
+    float: left;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.tutorial-list-item{
+    height: 50px;
+    font-size: 25px;
+    padding: 10px;
+    border-bottom: 1px solid #fcb5b5;
+    background-color: #fef2f2;
+}
+
+.tutorial-list-item .tutorial-list-title{
+    float: left;
+    margin-top: 10px;
+    height: 39px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+[data-page="noob-tutorial-content"] .content-block{
+    min-height: 300px;
+    background-color: #fef2f2;
+}
+
+[data-page="noob-tutorial-content"] .article-main{
+    font-size: 18px;
+}
+
+.hospital-list-item{
+    height: 80px;
+    padding: 10px;
+    position: relative;
+    background-color: #fef2f2;
+    border-bottom: 1px solid #fcb5b5;
+}
+
+.hospital-name{
+    display: block;
+    font-size: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hospital-distance{
+    color: gray;
+}
+
+.hospital-address{
+    display: block;
+    max-width: calc(100% - 70px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hospital-locate-link{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.hospital-phone-link{
+    position: absolute;
+    right: 45px;
+    bottom: 8px;
+}
+
+/* Checkbox Style */
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 1.95em;
+    cursor: pointer;  
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.25em; height: 1.25em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713\0020';
+  position: absolute;
+  top: .15em; left: .22em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+  font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #4778d9!important;
+}
+
+/* Checkbox Style */
+
+.panel-right select{
+    height: 35px;
+    width: 139px;
+    font-size: 18px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background: url(../img/br_down.png) no-repeat right;
+    background-position-x: 113px;
+    -webkit-appearance: listbox;
+    display: inline-block;
+}
+
+.filter-title{
+    width: 100%;
+    background-color: #f9c8c8;
+    height: 56px;
+    text-align: center;
+}
+
+.filter-title span{
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.filter-button{
+    float: right;
+    background-color: #f9c8c8;
+    width: 72px;
+    height: 32px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    text-align: center;
+    font-size: 18px;
+}
+
+.filter-button span{
+    display: inline-block;
+    margin-top: 3.9px;
+}
+
+.user-info-mid p {
+    margin: 2px;
+}
+
+.user-info-top{
+    text-align: center;
+    padding: 10px;
+    height: 180px;
+    position: relative;
+}
+
+.user-info-top #user-icon{
+    width: 139px;
+    height: 139px;
+    margin-top: 20px;
+    border-radius: 100%;
+}
+
+.user-info-top #upload-icon{
+    position: absolute;
+    left: calc(50% + 36px);
+    bottom: 29px;
+    width: 30px;
+}
+
+.user-info-mid{
+    padding: 10px;
+    background-color: #c6e9e2;
+    border-top: 1px solid #4daa97;
+    border-bottom: 1px solid #4daa97;
+    font-size: 22px;
+    position: relative;
+}
+
+.user-info-mid #edit-profile-icon{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 39px;
+}
+
+.user-info-bottom{
+    font-size: 22px;
+}
+
+.donate-record-link{
+    width: 80%;
+    text-align: center;
+    height: 42px;
+    background-color: #0fac8e;
+    color: white;
+    margin: 20px auto;
+}
+
+.user-info-bottom div span{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.apply-midway-link{
+    width: 50%;
+    text-align: center;
+    height: 42px;
+    background-color: #0fac8e;
+    color: white;
+    float: left;
+    margin-left: 10%;
+}
+
+.logout-link{
+    width: 25%;
+    text-align: center;
+    height: 42px;
+    background-color: #0fac8e;
+    color: white;
+    float: left;
+    margin-left: 5%;
+}
+
+.donate-records-list-item{
+    height: 60px;
+    background-color: #c6e9e2;
+    padding: 10px;
+    border-bottom: 1px solid #8fd8ca;
+}
+
+.donate-records-list-title{
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.donate-records-list-item .donate-state{
+    float: right;
+    font-size: 16px;
+    color: red;
+}
+
+.donate-records-list-item .donate-records-list-amount{
+    font-size: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    color: #6d6d6d;
+}
+
+.night-filter{
+    height: 50px;
+    font-size: 20px;
+}
+
+.night-filter .toggle{
+    margin-bottom: 12px;
+}
+
+.md .night-filter .toggle-icon {
+    width: 39px;
+    height: 22px;
+    border-radius: 14px;
+    background: #b0afaf;
+}
+
+.md .night-filter .toggle-icon:after{
+    top: 1px;
+}
+
+.md .notification{
+    font-family: sans-serif;
+}
+
+.report-help-button{
+    width:250px;
+    height:50px;
+    color:white;
+    background-color: #c97bfc;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.report-help-button span{
+    display:inline-block;
+    margin-top:10px;
+}
