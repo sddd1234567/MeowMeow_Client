@@ -16,6 +16,8 @@ var isLoadingHelp = false;
 var isLoadingForum = [false, false, false, false];
 var userIconCache = {};
 var userNameCache = {};
+
+//頁面路由宣告
 var app = new Framework7({
     root: '#app',
     name: 'Meowmeow',
@@ -111,56 +113,52 @@ var $$ = Dom7;
 var nowPageName;
 var loginScreen;
 var signUpScreen;
+
+//監聽當tab被切換的事件(側欄or討論區類別)
 app.on('tabShow', function (newTableElement, tabRoute) {
     console.log(newTableElement.id);
-    if(newTableElement.id == "forum-tab")
+    switch(newTableElement)
     {
-        ReloadAllForumList();
-    }
-    else if(newTableElement.id == "pic-share-tab")
-        loadPicSharePage(-1,true);
-    else if (newTableElement.id == "help-tab") {
-        console.log("start load help");
-        console.log(isLoadingHelp);
-        loadHelpPage(-1, true);
-    }
-    else if(newTableElement.id == "fundraising-tab")
-    {
-        console.log('show fundraising');
-        loadFundraisingPage(-1, true);
-    }
-    else if (newTableElement.id == "chatroom-tab") {
-        console.log('show chatroom');
-        loadChatroomPage(-1);
-    }
-    else if (newTableElement.id == "noob-tab") {
-        console.log('show chatroom');
-        loadNoobPage();
-        if (!app.device.android) {
-            LoadHospitalPage("", 0, false, true);
-        }
-    }
-    else if (newTableElement.id == "my-post-tab") {
-        console.log('show my post');
-        loadMyPost();
+        case "forum-tab":
+            ReloadAllForumList();
+            break;
+        case "pic-share-tab":
+            loadPicSharePage(-1, true);
+            break;
+        case "help-tab":
+            loadHelpPage(-1, true);
+            break;
+        case "fundraising-tab":
+            loadFundraisingPage(-1, true);
+            break;
+        case "chatroom-tab":
+            loadChatroomPage(-1);
+            break;
+        case "noob-tab":
+            loadNoobPage();
+            if (!app.device.android) {
+                LoadHospitalPage("", 0, false, true);
+            }
+            break;
+        case "my-post-tab":
+            loadMyPost();
+            break;
+        case "tab-hospital":
+            document.querySelector('.hospital-filter-icon').style.display = "block";
+            break;            
     }
 
-    if(newTableElement.id == "tab-hospital")
-    {
-        document.querySelector('.hospital-filter-icon').style.display = "block";
-    }
-    else
+    if(newTableElement.id != "tab-hospital")
     {
         document.querySelector('.hospital-filter-icon').style.display = "none";
     }
 });
+
+//Android裝置開啟app時呼叫(若在browser測試則不會)
 document.addEventListener("deviceready", function(){
     console.log('device ready');
     pageHistory = [];
     pageHistory.push('/');
-    // var loginScreen = app.loginScreen.create();
-    if (app.device.android) {
-    }
 
     document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
@@ -266,6 +264,7 @@ function handle_back() {
     }
 };
 
+//開啟新的Page時呼叫
 $$(document).on('page:init', function(e){
     console.log('page init');
     var page = e.detail;
@@ -279,100 +278,80 @@ $$(document).on('page:init', function(e){
 
     $$('.back').on('click', handle_back);
 
-    if(nowPageName == "home")
+    switch(nowPageName)
     {
-        // loadPicSharePage(-1, true);
-    }
-    else if(nowPageName == "pic-share-content")
-    {
-        console.log(page.route.query.index);
-        LoadPicShareContent(page.route.query.index);
-        $$('.submit-button').on('click', function(){
-            NewPicShareComment(page.route.query.index);
-        });
-    }
-    else if(nowPageName == "new-pic-share-post")
-    {
-
-        document.querySelector("[data-page='new-pic-share'] .user-icon").src = userInfo.icon;
-        document.querySelector("[data-page='new-pic-share'] .poster-name").innerText = userInfo.name;
-    }
-    else if(nowPageName == 'forum-article-content')
-    {
-        LoadForumArticleContent(page.route.query.index);
-        $$('.submit-button').on('click', function () {
-            NewForumComment(page.route.query.index);
-        });
-    }
-    else if(nowPageName == "new-forum-article")
-    {
-        document.querySelector("[data-page='new-forum-article'] .user-icon").src = userInfo.icon;
-        document.querySelector("[data-page='new-forum-article'] .poster-name").innerText = userInfo.name;
-        // var pickerDevice = app.picker.create({
-        //     inputEl: '#classify',
-        //     cols: [
-        //         {
-        //             textAlign: 'center',
-        //             values: ['情報','提問','收養','失蹤']
-        //         }
-        //     ]
-        // });
-    }
-    else if(nowPageName == "help-content")
-    {
-        LoadHelpContent(page.route.query.index);
-        $$('.submit-button').on('click', function () {
-            NewHelpComment(page.route.query.index);
-        });
-    }
-    else if(nowPageName == "new-help")
-    {
-        document.querySelector("[data-page='new-help'] .user-icon").src = userInfo.icon;
-        document.querySelector("[data-page='new-help'] .poster-name").innerText = userInfo.name;
-
-        var emergency_rate_el = document.querySelectorAll('[data-page="new-help"] .emergency-rate');
-        for(var i = 0; i < emergency_rate_el.length; i++)
-        {
-            emergency_rate_el[i].setAttribute('onclick', 'SetEmergencyRate('+i+')');
-        }
-
-    }
-    else if(nowPageName == "new-help-map-mark"){
-        initNewHelpMap();
-        app.panel.disableSwipe('.panel-left');
-    }
-    else if (nowPageName == "fundraising-content") {
-        LoadFundraisingContent(page.route.query.index);
-    }
-    else if (nowPageName == "fundraising-update-content") {
-        var index = page.route.query.index;
-        var updateIndex = page.route.query.updateIndex;
-        LoadFundraisingUpdateContent(index, updateIndex);
-    }
-    else if (nowPageName == "donate-payment-content") {
-        var index = page.route.query.index;
-        LoadDonatePaymentContent(index, updateIndex);
-    }
-    else if(nowPageName == "select-payment"){
-        var index = page.route.query.index;
-        var name = page.route.query.name;
-        nowChooseFundraising = index;
-        nowChooseFundraisingName = name;
-    }
-    else if (nowPageName == "chatroom-content") {
-        var index = page.route.query.index;
-        listenChatroom(index);
-        LoadChatroomContent(index);
-        $('[data-page="page-content"] .back').onclick = function(){
-            stopListenChatroom(index);
-        }
-    }
-    else if (nowPageName == "noob-tutorial-content") {
-        var index = page.route.query.index;
-        LoadTutorialContent(index);
-    }
-    else if (nowPageName == "donate-records") {
-        loadDonateRecordsPage();
+        case "pic-share-content":
+            console.log(page.route.query.index);
+            LoadPicShareContent(page.route.query.index);
+            $$('.submit-button').on('click', function () {
+                NewPicShareComment(page.route.query.index);
+            });
+            break;
+        case "new-pic-share-post":
+            document.querySelector("[data-page='new-pic-share'] .user-icon").src = userInfo.icon;
+            document.querySelector("[data-page='new-pic-share'] .poster-name").innerText = userInfo.name;
+            break;
+        case "forum-article-content":
+            LoadForumArticleContent(page.route.query.index);
+            $$('.submit-button').on('click', function () {
+                NewForumComment(page.route.query.index);
+            });
+            break;
+        case "new-forum-article":
+            document.querySelector("[data-page='new-forum-article'] .user-icon").src = userInfo.icon;
+            document.querySelector("[data-page='new-forum-article'] .poster-name").innerText = userInfo.name;
+            break;
+        case "help-content":
+            LoadHelpContent(page.route.query.index);
+            $$('.submit-button').on('click', function () {
+                NewHelpComment(page.route.query.index);
+            });
+            break;
+        case "new-help":
+            document.querySelector("[data-page='new-help'] .user-icon").src = userInfo.icon;
+            document.querySelector("[data-page='new-help'] .poster-name").innerText = userInfo.name;
+            var emergency_rate_el = document.querySelectorAll('[data-page="new-help"] .emergency-rate');
+            for (var i = 0; i < emergency_rate_el.length; i++) {
+                emergency_rate_el[i].setAttribute('onclick', 'SetEmergencyRate(' + i + ')');
+            }
+            break;
+        case "new-help-map-mark":
+            initNewHelpMap();
+            app.panel.disableSwipe('.panel-left');
+            break;
+        case "fundraising-content":
+            LoadFundraisingContent(page.route.query.index);
+            break;
+        case "fundraising-update-content":
+            var index = page.route.query.index;
+            var updateIndex = page.route.query.updateIndex;
+            LoadFundraisingUpdateContent(index, updateIndex);
+            break;
+        case "donate-payment-content":
+            var index = page.route.query.index;
+            LoadDonatePaymentContent(index, updateIndex);
+            break;
+        case "select-payment":
+            var index = page.route.query.index;
+            var name = page.route.query.name;
+            nowChooseFundraising = index;
+            nowChooseFundraisingName = name;
+            break;
+        case "chatroom-content":
+            var index = page.route.query.index;
+            listenChatroom(index);
+            LoadChatroomContent(index);
+            $('[data-page="page-content"] .back').onclick = function () {
+                stopListenChatroom(index);
+            }
+            break;
+        case "noob-tutorial-content":
+            var index = page.route.query.index;
+            LoadTutorialContent(index);
+            break;
+        case "donate-records":
+            loadDonateRecordsPage();
+            break;
     }
 });
 
@@ -663,6 +642,7 @@ function OpenPhotoBrowser(key)
     photoBrowsers[key].openPopup();
 }
 
+//初始化載入條
 app.infiniteScroll.create($$('[data-page="pic-share"] .page-content.infinite-scroll-content'));
 app.infiniteScroll.create($$('[data-page="forum"] #tab-0.page-content.infinite-scroll-content'));
 app.infiniteScroll.create($$('[data-page="forum"] #tab-1.page-content.infinite-scroll-content'));
@@ -2394,6 +2374,7 @@ function ShowHospitalList(list, isReload){
 }
 
 var taiwanDistrictJson;
+//動物醫院縣市
 function initialHospitalFilter(){
     $.get("./TaiwanDistrict.json", function(data){
         taiwanDistrictJson = data;
@@ -2421,6 +2402,7 @@ function OnCiyFilterChanged(){
     }
 }
 
+//過濾動物醫院
 function ApplyHospitalFilter(){
     var city = document.querySelector('select#city').value;
     var district_input = document.getElementsByName('district');
@@ -2465,6 +2447,8 @@ function calcCrow(lat1, lon1, lat2, lon2) {
 function toRad(Value) {
     return Value * Math.PI / 180;
 }
+
+//取得樣板
 
 $.get("pages/elements/forum-article-item.html", function (data) {
     forumArticleItemStr = data;
