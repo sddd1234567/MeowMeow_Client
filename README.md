@@ -32,7 +32,7 @@
 # 如何進入募款頁面，並運用綠界金流捐款
 
 在成功登入App後可點擊左上角進入選單頁
-![](https://i.imgur.com/j3HwVi1.jpg)
+![](https://i.imgur.com/j3HwVi1.jpg|width=50)
 
 選擇「募款」
 ![](https://i.imgur.com/rLDBaD2.jpg)
