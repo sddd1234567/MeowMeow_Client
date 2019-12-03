@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyBRaj6larr7ZIGY2HjOKr3JSJQyzJvM6U4",
-  authDomain: "meowmeow-31087.firebaseapp.com",
-  databaseURL: "https://meowmeow-31087.firebaseio.com",
-  projectId: "meowmeow-31087",
-  storageBucket: "meowmeow-31087.appspot.com",
-  messagingSenderId: "673098408642"
+  apiKey: "API_KEY",
+  authDomain: "API_KEY",
+  databaseURL: "API_KEY",
+  projectId: "API_KEY",
+  storageBucket: "API_KEY",
+  messagingSenderId: "API_KEY"
 };
 firebase.initializeApp(config);
 
